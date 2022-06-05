@@ -63,6 +63,26 @@ Parameters:
     Default: '192.0.31.0/24'
     Description: "Database Subnet-B CIDR"    
 
+Resources:
+#============= VPC ==================
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:                              # Attach Primary CIDR Block
+      CidrBlock: !Ref VPCBlock             
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Ref Environment
+
+  VPCCidrBlock2:                             # Attach Secondary CIDR Block
+    Type: "AWS::EC2::VPCCidrBlock"
+    DependsOn: VPC
+    DeletionPolicy: Delete
+    Properties: 
+      CidrBlock: !Ref VPCBlock2
+      VpcId: !Ref VPC          
+          
 {
   "typeName": "AWS::Amplify::Domain",
   "description": "The AWS::Amplify::Domain resource allows you to connect a custom domain to your app.",
