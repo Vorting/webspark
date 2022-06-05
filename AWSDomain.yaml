@@ -1,4 +1,9 @@
- # CloudFormation Network Layer: VPC, Subnets + RouteTables, Internet + NAT Gateways
+# --------------------------------------------------------------------------------------------------
+# CloudFormation Network Layer: VPC, Subnets + RouteTables, Internet + NAT Gateways
+# --------------------------------------------------------------------------------------------------
+AWSTemplateFormatVersion: 2010-09-09
+Description: "Network: VPC, Subnets + RouteTables, Internet + NAT Gateways"
+
 Metadata:
  AWS::CloudFormation::Interface: 
     ParameterGroups: 
