@@ -1,3 +1,25 @@
+ # CloudFormation Network Layer: VPC, Subnets + RouteTables, Internet + NAT Gateways
+Metadata:
+ AWS::CloudFormation::Interface: 
+    ParameterGroups: 
+      - 
+        Label: 
+          default: "Network Configuration"
+        Parameters: 
+          - Environment
+          - VPCBlock
+          - VPCBlock2
+      -
+        Label:
+          default: "Subnets CIDR Blocks"
+        Parameters:
+          - PublicSubnetACIDR
+          - PublicSubnetBCIDR
+          - PrivateSubnetACIDR
+          - PrivateSubnetBCIDR
+          - DatabaseSubnetACIDR
+          - DatabaseSubnetBCIDR
+
 {
   "typeName": "AWS::Amplify::Domain",
   "description": "The AWS::Amplify::Domain resource allows you to connect a custom domain to your app.",
@@ -57,6 +79,7 @@
       },
       "maxItems": 255
     }
+    
   },
   "definitions": {
     "SubDomainSetting": {
