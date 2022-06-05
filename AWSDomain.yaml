@@ -96,7 +96,43 @@ Resources:
     Properties:
       VpcId:  !Ref VPC
       InternetGatewayId: !Ref GatewayInternet
+ #====== Public RouteTables =========	  
+  RouteTableForPublicSubnet:                       # Creation of Empty Route Table
+    Type: "AWS::EC2::RouteTable"                    
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Join [ " ", [ !Ref Environment, "PublicRouteTable" ] ]
+
           
+  RoutesForPublicRouteTable:                     # Creation and Attachment of Routes for Route Table
+    Type: "AWS::EC2::Route"
+    DependsOn: GatewayAttachmentInternet
+    Properties: 
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref GatewayInternet
+      RouteTableId: !Ref RouteTableForPublicSubnet
+          
+        
+ 
+#====== Private RouteTables ===========
+  RouteTableForPrivateSubnetA:
+    Type: "AWS::EC2::RouteTable"
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Join [ " ", [ !Ref Environment, "PrivateRouteTableA" ] ]
+          
+  RouteTableForPrivateSubnetB:
+    Type: "AWS::EC2::RouteTable"
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Join [ " ", [ !Ref Environment, "PrivateRouteTableB" ] ]
+         
 {
   "typeName": "AWS::Amplify::Domain",
   "description": "The AWS::Amplify::Domain resource allows you to connect a custom domain to your app.",
