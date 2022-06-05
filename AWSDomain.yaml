@@ -20,6 +20,49 @@ Metadata:
           - DatabaseSubnetACIDR
           - DatabaseSubnetBCIDR
 
+Parameters:
+  Environment:
+    Type: String
+    Default: "Test-Prod"
+
+  VPCBlock:
+    Type: String
+    Default: '10.0.0.0/16'
+  
+  VPCBlock2:
+    Type: String
+    Default: '192.0.0.0/16'
+
+  PublicSubnetACIDR: 
+    Type: String
+    Default: '10.0.10.0/24'
+    Description: "Public Subnet-A CIDR"
+
+  PublicSubnetBCIDR: 
+    Type: String
+    Default: '10.0.20.0/24'
+    Description: "Public Subnet-B CIDR"
+  
+  PrivateSubnetACIDR: 
+    Type: String
+    Default: '10.0.11.0/24'
+    Description: "Private Subnet-A CIDR"
+    
+  PrivateSubnetBCIDR: 
+    Type: String
+    Default: '10.0.21.0/24'
+    Description: "Public Subnet-B CIDR"
+
+  DatabaseSubnetACIDR: 
+    Type: String
+    Default: '192.0.30.0/24'
+    Description: "Database Subnet-A CIDR"
+    
+  DatabaseSubnetBCIDR: 
+    Type: String
+    Default: '192.0.31.0/24'
+    Description: "Database Subnet-B CIDR"    
+
 {
   "typeName": "AWS::Amplify::Domain",
   "description": "The AWS::Amplify::Domain resource allows you to connect a custom domain to your app.",
